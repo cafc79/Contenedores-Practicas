@@ -16,9 +16,10 @@ spec:
         image: registry.k8s.io/hpa-example
         ports:
         - containerPort: 80
+          name: pod-custom-port
         resources:
           limits:
-            cpu: 300m
+            cpu: 400m
           requests:
-            cpu: 100m
+            cpu: 200m
 
