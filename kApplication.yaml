@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: php-apache
+  name: WebApp
 spec:
   selector:
     matchLabels:
-      run: php-apache
+      run: WebApp
   template:
     metadata:
       labels:
-        run: php-apache
+        run: WebApp
     spec:
       containers:
-      - name: php-apache
+      - name: WebApp
         image: registry.k8s.io/hpa-example
         ports:
         - containerPort: 80
