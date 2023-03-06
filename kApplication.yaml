@@ -13,8 +13,7 @@ spec:
     spec:
       containers:
       - name: webapp
-        #image: registry.k8s.io/hpa-example
-        image: k8s.gcr.io/hpa-example
+        image: registry.k8s.io/hpa-example        
         ports:
         - containerPort: 80
           name: pod-custom-port
