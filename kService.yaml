@@ -7,6 +7,5 @@ metadata:
 spec:
   ports:
   - port: 80
-    targetPort: pod-custom-port    
   selector:
     run: webapp
