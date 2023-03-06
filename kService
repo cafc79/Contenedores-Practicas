@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: SVC-WebApp
+  name: svc-webapp
   labels:
-    run: WebApp
+    run: webapp
 spec:
   ports:
   - nodePort: 8083
