@@ -12,7 +12,7 @@ spec:
         run: WebApp
     spec:
       containers:
-      - name: WebApp
+      - name: webapp
         image: registry.k8s.io/hpa-example
         ports:
         - containerPort: 80
