@@ -5,11 +5,11 @@ metadata:
 spec:
   selector:
     matchLabels:
-      run: WebApp
+      run: webapp
   template:
     metadata:
       labels:
-        run: WebApp
+        run: webapp
     spec:
       containers:
       - name: webapp
@@ -18,7 +18,7 @@ spec:
         - containerPort: 80
         resources:
           limits:
-            cpu: 100m
+            cpu: 300m
           requests:
-            cpu: 50m
+            cpu: 100m
 
