@@ -13,13 +13,14 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: registry.k8s.io/hpa-example        
+        #image: registry.k8s.io/hpa-example      
+        image: cafc79/loginapiservice-demo
         ports:
-        - containerPort: 80
+        - containerPort: 8080
           name: pod-custom-port
         resources:
           limits:
-            cpu: 500m
+            cpu: 400m
           requests:
             cpu: 200m
 
