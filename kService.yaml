@@ -6,6 +6,6 @@ metadata:
     run: webapp
 spec:
   ports:
-  - port: 80
+  - port: 8080
   selector:
     run: webapp
