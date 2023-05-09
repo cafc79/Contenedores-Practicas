@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: loginapi
+  namespace: login20-dummy
+  labels:
+    app: loginapi
+    deployment: loginapi
+spec:
+  containers:
+    - name: loginapi
+      image: cafc79/loginapi:0.2    
+      imagePullPolicy: IfNotPresent  
+      command: ["sh", "-c", "cp /data/client.keystore.jks /app", "cp /data/client.truststore.jks /app"] 
+      ports:
+        - containerPort: 8080
+          protocol: TCP
+        - containerPort: 8443
+          protocol: TCP
+      resources:
+        requests:
+          memory: "64Mi"
+          cpu: "250m"
+        limits:
+          memory: "128Mi"
+          cpu: "500m"      
+      volumeMounts:
+      - name: config
+        mountPath: "/config"
+        readOnly: true     
+      - mountPath: /data
+        name: certs 
+      #- mountPath: /test
+      #  name: test-volume
+      - mountPath: "/app"
+        name: task-pv-storage
+  volumes:
+    - name: task-pv-storage
+      persistentVolumeClaim:
+        claimName: task-pv-claim
+    #- name: test-volume
+    #  hostPath:
+    #    path: /data
+    #    type: DirectoryOrCreate
+    - name: config
+      configMap:        
+        name: cm-loginapi
+    - name: certs
+      hostPath:
+        # localización del directorio en el host
+        path: /data
+        # este campo es opcional
+        type: DirectoryOrCreate

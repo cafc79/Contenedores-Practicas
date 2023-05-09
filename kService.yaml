@@ -1,11 +1,21 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: svc-webapp
+  name: svc-loginapi
+  namespace: login20-dummy
   labels:
-    run: webapp
+    run: loginapi  
+    app: loginapi
+    app.profuturo.mx/zone: dev
+    app.profuturo.mx/version: v3
+    app.profuturo.mx/phase: test-mtls
+    app.profuturo.mx/tier: backend
+    app.profuturo.mx/client: mx.profuturo
 spec:
   ports:
-  - port: 8080
+  - name: http
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
   selector:
-    run: webapp
+    run: loginapi

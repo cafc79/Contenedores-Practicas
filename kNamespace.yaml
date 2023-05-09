@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: login20-dummy
+  labels:
+    app: loginapi
+    app.profuturo.mx/zone: dev
+    app.profuturo.mx/version: v3
+    app.profuturo.mx/phase: test-mtls
+    app.profuturo.mx/tier: backend
+    app.profuturo.mx/client: mx.profuturo

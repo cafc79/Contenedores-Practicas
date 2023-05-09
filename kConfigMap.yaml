@@ -1,0 +1,28 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cm-loginapi  
+  namespace: login20-dummy
+  labels:
+    app: loginapi
+    app.profuturo.mx/zone: dev
+    app.profuturo.mx/version: v3
+    app.profuturo.mx/phase: test-mtls
+    app.profuturo.mx/tier: backend
+    app.profuturo.mx/client: mx.profuturo
+immutable: false
+data:
+  server.port: '8080'
+  server.ssl.enabled: 'true'
+  server.ssl.protocol: TLS  
+  server.ssl.enabled-protocols: TLSv1.3
+  server.ssl.key-store-type: PKCS12
+  server.ssl.key-store-password: "pr0futur0"
+  server.ssl.key-password: "pr0futur0"
+  server.ssl.key-alias: openshift
+  server.ssl.key-store-provider: SUN
+  server.ssl.trust-store-type: JKS
+  server.ssl.trust-store-provider: SUN
+  server.ssl.trust-store-password: "pr0futur0"
+
+  

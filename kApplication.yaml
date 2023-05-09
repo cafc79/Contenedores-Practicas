@@ -1,26 +1,53 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webapp
+  name: loginapi
+  namespace: login20-dummy
+  labels:
+    app: loginapi
+    app.profuturo.mx/zone: dev
+    app.profuturo.mx/version: v3
+    app.profuturo.mx/phase: test-mtls
+    app.profuturo.mx/tier: backend
+    app.profuturo.mx/client: mx.profuturo
 spec:
   selector:
     matchLabels:
-      run: webapp
+      run: loginapi
+  replicas: 1
+  minReadySeconds: 5
+  strategy:
+    type: Recreate    
   template:
     metadata:
       labels:
-        run: webapp
+        run: loginapi
     spec:
       containers:
-      - name: webapp
-        #image: registry.k8s.io/hpa-example      
-        image: cafc79/loginapi:0.2
+      - name: loginapi
+        image: cafc79/loginapi:0.3
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
         ports:
         - containerPort: 8080
           name: pod-custom-port
+        env:
+        - name: server.ssl.key-store
+          value: "/app/clientkeystore.p12"
+        - name: server.ssl.trust-store
+          value: "/app/client.truststore.jks"
+        volumeMounts:
+        - name: config
+          mountPath: "/config"
+          readOnly: true    
         resources:
-          limits:
-            cpu: 400m
           requests:
-            cpu: 200m
-
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+      volumes:
+      - name: config
+        configMap:        
+          name: cm-loginapi
