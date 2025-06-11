@@ -3,30 +3,28 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: webapp
-  labels:
-    app: webapp
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: webapp
+      run: webapp
   template:
     metadata:
       labels:
-        app: webapp
+        run: webapp
     spec:
       containers:
       - name: webapp
+        # image: registry.k8s.io/hpa-example      
         image: cafc79/loginapi:0.4
         ports:
         - containerPort: 8080
+          name: pod-custom-port
         resources:
           requests:
-            cpu: "100m"
-            memory: "128Mi"
+            cpu: 100m	          
           limits:
-            cpu: "200m"
-            memory: "256Mi"
+            cpu: 200m
         readinessProbe:
           httpGet:
             path: /health
