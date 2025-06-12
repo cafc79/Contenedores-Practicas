@@ -56,15 +56,15 @@ Ambos pods caídos	N/A	100%	Hasta nuevo despliegue
 
 Automatizar la prueba:
 # Script de ejemplo
-#!/bin/bash
-echo "Iniciando prueba..."
-hey -z 30s -q 5 http://$LB_IP &
-sleep 10
-kubectl delete pod $POD1
-sleep 20
-kubectl delete pod $POD2
+#!/bin/bash  
+echo "Iniciando prueba..."  
+hey -z 30s -q 5 http://$LB_IP &  
+sleep 10  
+kubectl delete pod $POD1  
+sleep 20  
+kubectl delete pod $POD2  
 
-Considerar usar herramientas profesionales:
-Chaos Mesh
-Litmus Chaos
+Considerar usar herramientas profesionales:  
+Chaos Mesh  
+Litmus Chaos  
 Gremlin
