@@ -1,17 +1,19 @@
+# precedente: kApplication.yaml
+# kubectl apply -f kService.yaml
+
 apiVersion: v1
 kind: Service
 metadata:
-  name: svc-webapp
+  name: webapp-service
   annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
     prometheus.io/scrape: "true"
-    prometheus.io/port: "80"
-  labels:
-    run: webapp
+    splunk.com/index: "k8s_services"
 spec:
-  ports:
-  - port: 8080
-  externalIPs:
-    - 1.2.4.114
   selector:
-    run: webapp  
+    app: webapp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
   type: LoadBalancer
