@@ -47,9 +47,15 @@ helm install prometheus prometheus-community/kube-prometheus-stack
 kubectl port-forward svc/prometheus-grafana 3000:80
 
 ## Ejemplo de métricas esperadas
-Escenario	Latencia promedio	Tasa de error	Tiempo de recuperación
-Normal (2 pods)	50-100ms	0%	-
-Durante failover	200-500ms	5-10%	2-10 segundos
+|Escenario   |Latencia promedio  | Tasa de error  | Tiempo de recuperación  |  
+|---|---|---|---|---|
+| Normal  |   |   |   |   |
+| Durante failover |   |   |   |   |
+|   |   |   |   |   |
+
+	 		
+ (2 pods)	50-100ms	0%	-
+	200-500ms	5-10%	2-10 segundos
 Ambos pods caídos	N/A	100%	Hasta nuevo despliegue
 
 ## Automatizar la prueba:
