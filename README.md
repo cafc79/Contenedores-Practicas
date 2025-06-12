@@ -23,18 +23,18 @@ kubectl get pods -w
 
 Iniciar prueba de carga continua (en otra terminal):
 # En otra terminal 
-hey -z 10m -q 10 http://<load-balancer-ip>
-o
-export LB_IP=$(kubectl get svc loginapi-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+hey -z 10m -q 10 http://<load-balancer-ip>  
+o  
+export LB_IP=$(kubectl get svc loginapi-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}')  
 hey -z 10m -q 10 http://$LB_IP
 
 # En tercera terminal (para eliminar un pod)
-kubectl get pods
-kubectl delete pod <nombre-pod-1>
+kubectl get pods  
+kubectl delete pod <nombre-pod-1>  
 kubectl get events --sort-by='.metadata.creationTimestamp' -w
 
-Para el escenario de fallo total:
-kubectl scale deployment loginapi-deployment --replicas=0
+Para el escenario de fallo total:  
+kubectl scale deployment loginapi-deployment --replicas=0  
 # Observar el comportamiento del LoadBalancer
 El Load Balancer debería devolver errores 502/503
 
