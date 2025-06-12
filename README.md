@@ -13,23 +13,23 @@ kubectl apply -f https://github.com/cafc79/Contenedores-Practicas/blob/loadBalan
 7. metrics-server-deployment.yaml
 8. load-test.yaml
 
-## En una terminal
+#### En una terminal
 Obtener la IP externa del LoadBalancer:
 kubectl get svc loginapi-service -w
 
 ## Ejecutar prueba manual:
-###  En una terminal
+####  En una terminal
 kubectl get pods -w
 
-##Iniciar prueba de carga continua (en otra terminal):
+### Iniciar prueba de carga continua (en otra terminal):
 Se utilizara HEY (https://github.com/rakyll/hey) para enviar una peticion de carga a una web app 
-### En otra terminal 
+#### En otra terminal 
 hey -z 10m -q 10 http://<load-balancer-ip>  
 o  
 export LB_IP=$(kubectl get svc loginapi-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}')  
 hey -z 10m -q 10 http://$LB_IP
 
-# En tercera terminal (para eliminar un pod)
+#### En tercera terminal (para eliminar un pod)
 kubectl get pods  
 kubectl delete pod <nombre-pod-1>  
 kubectl get events --sort-by='.metadata.creationTimestamp' -w
