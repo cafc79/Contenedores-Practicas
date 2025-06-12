@@ -38,13 +38,11 @@ kubectl scale deployment loginapi-deployment --replicas=0
 # Observar el comportamiento del LoadBalancer
 El Load Balancer debería devolver errores 502/503
 
-
-Para métricas más detalladas, considera agregar:
-
-Prometheus Operator:
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-helm install prometheus prometheus-community/kube-prometheus-stack
-Grafana para visualización:
+Para métricas más detalladas, considera agregar:  
+Prometheus Operator:  
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts  
+helm install prometheus prometheus-community/kube-prometheus-stack  
+Grafana para visualización:  
 kubectl port-forward svc/prometheus-grafana 3000:80
 
 
