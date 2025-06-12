@@ -22,6 +22,7 @@ Ejecutar prueba manual:
 kubectl get pods -w
 
 Iniciar prueba de carga continua (en otra terminal):
+Se utilizara HEY (https://github.com/rakyll/hey) para enviar una peticion de carga a una web app 
 # En otra terminal 
 hey -z 10m -q 10 http://<load-balancer-ip>  
 o  
@@ -33,18 +34,17 @@ kubectl get pods
 kubectl delete pod <nombre-pod-1>  
 kubectl get events --sort-by='.metadata.creationTimestamp' -w
 
-Para el escenario de fallo total:  
+### Para el escenario de fallo total:  
 kubectl scale deployment loginapi-deployment --replicas=0  
 # Observar el comportamiento del LoadBalancer
 El Load Balancer debería devolver errores 502/503
 
-Para métricas más detalladas, considera agregar:  
-Prometheus Operator:  
+## Para métricas más detalladas, considera agregar:  
+### Prometheus Operator:  
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts  
 helm install prometheus prometheus-community/kube-prometheus-stack  
-Grafana para visualización:  
+### Grafana para visualización:  
 kubectl port-forward svc/prometheus-grafana 3000:80
-
 
 # Ejemplo de métricas esperadas
 Escenario	Latencia promedio	Tasa de error	Tiempo de recuperación
