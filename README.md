@@ -2,7 +2,7 @@
 
 ## Orden de ejecucion 
 
-kubectl apply -f https://github.com/cafc79/Contenedores-Practicas/blob/loadBalancer/{file.yaml}
+kubectl apply -f https://github.com/cafc79/Contenedores-Practicas/blob/loadBalance-Splunk/{file.yaml}
 
 1. splunk-secret.yaml  
 2. kApplication.yaml
