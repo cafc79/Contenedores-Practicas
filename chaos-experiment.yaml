@@ -1,0 +1,29 @@
+# precedente: splunk-secret.yaml
+# kubectl apply -f chaos-experiment.yaml
+
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: pod-delete-chaos
+  namespace: default
+spec:
+  appinfo:
+    appns: default
+    applabel: "app=webapp"
+    appkind: deployment
+  annotationCheck: "false"
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-delete
+    spec:
+      components:
+        env:
+        - name: TOTAL_CHAOS_DURATION
+          value: "30"
+        - name: CHAOS_INTERVAL
+          value: "5"
+        - name: FORCE
+          value: "false"
+        - name: PODS_AFFECTED_PERC
+          value: "50"
