@@ -6,8 +6,8 @@ kubectl apply -f https://github.com/cafc79/Contenedores-Practicas/blob/loadBalan
 
 1. kApplication.yaml
 2. kService.yaml
-3. kLimitRange.yaml (opcional)
-4. metrics-server.yaml
+3. splunk-secret.yaml (opcional)
+4. chaos-experiment.yaml
 5. aggregated-metrics-reader.yaml
 6. auth-delegator.yaml
 7. metrics-server-deployment.yaml
