@@ -1,0 +1,5 @@
+# Instalación de Chaos Mesh (versión simplificada)
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: chaos-testing
