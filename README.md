@@ -3,8 +3,6 @@
 ## Orden de ejecucion 
 helm repo add chaos-mesh https://charts.chaos-mesh.org  
 helm repo update  
-helm install chaos-mesh chaos-mesh/chaos-mesh --namespace=chaos-testing --set dashboard.create=truehelm repo add chaos-mesh https://charts.chaos-mesh.org  
-helm repo update  
 helm install chaos-mesh chaos-mesh/chaos-mesh --namespace=chaos-testing --set dashboard.create=true  
 
 kubectl apply -f https://github.com/cafc79/Contenedores-Practicas/blob/loadBalancer/{file.yaml}
