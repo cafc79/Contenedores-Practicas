@@ -1,17 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: svc-webapp
-  annotations:
-    prometheus.io/scrape: "true"
-    prometheus.io/port: "80"
-  labels:
-    run: webapp
+  name: webapp-service
 spec:
-  ports:
-  - port: 8080
-  externalIPs:
-    - 1.2.4.114
   selector:
-    run: webapp  
+    app: webapp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      externalIPs:
+        - 1.2.4.114
   type: LoadBalancer
+  
