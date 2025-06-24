@@ -3,22 +3,22 @@
 ## Orden de ejecucion 
 helm repo add chaos-mesh https://charts.chaos-mesh.org  
 helm repo update  
-helm install chaos-mesh chaos-mesh/chaos-mesh --namespace=chaos-testing --set dashboard.create=true  
+helm install chaos-mesh chaos-mesh/chaos-mesh --namespace=default --set dashboard.create=true  
 
 kubectl apply -f https://github.com/cafc79/Contenedores-Practicas/blob/loadBalancer/{file.yaml}
 
-1. kApplication.yaml
-2. kService.yaml
-3. kLimitRange.yaml (opcional)
-4. metrics-server.yaml
-5. aggregated-metrics-reader.yaml
-6. auth-delegator.yaml
-7. metrics-server-deployment.yaml
-8. load-test.yaml
+1. deployment.yaml
+2. service.yaml
+3. chaos-mesh-install.yaml (opcional)
+4. chaosmesh-rbac.yaml 
+5. pod-failure-experiment.yaml
+6. pod-kill-experiment.yaml
+7. service-monitor.yaml (Para Prometheus):
+8. grafana-dashboard.yaml  (opcional)
 
 #### En una terminal
 Obtener la IP externa del LoadBalancer:
-kubectl get svc loginapi-service -w
+kubectl get svc svc-webapp -w
 
 ## Ejecutar prueba manual:
 ####  En una terminal
