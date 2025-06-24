@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: webapp
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       run: webapp
@@ -18,22 +18,22 @@ spec:
         # image: registry.k8s.io/hpa-example      
         image: cafc79/loginapi:0.4
         ports:
-        - containerPort: 8080
+        - containerPort: 8082
           name: pod-custom-port
-        resources:
-          requests:
-            cpu: 200m	          
-          limits:
-            cpu: 400m
+        #resources:
+          #requests:
+            #cpu: 200m	          
+          #limits:
+            #cpu: 400m
         readinessProbe:
           httpGet:
             path: /health
-            port: 8080
+            port: 8082
           initialDelaySeconds: 5
           periodSeconds: 5
         livenessProbe:
           httpGet:
             path: /health
-            port: 8080
+            port: 8082
           initialDelaySeconds: 10
           periodSeconds: 10
