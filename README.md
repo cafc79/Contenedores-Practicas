@@ -15,7 +15,7 @@ kubectl apply -f https://github.com/cafc79/Contenedores-Practicas/blob/loadBalan
 
 #### En una terminal
 Obtener la IP externa del LoadBalancer:
-kubectl get svc loginapi-service -w
+kubectl get svc svc-webapp -w
 
 ## Ejecutar prueba manual:
 ####  En una terminal
@@ -35,7 +35,7 @@ kubectl delete pod <nombre-pod-1>
 kubectl get events --sort-by='.metadata.creationTimestamp' -w
 
 ## Para el escenario de fallo total:  
-kubectl scale deployment loginapi-deployment --replicas=0  
+kubectl scale deployment webapp --replicas=0  
 ### Observar el comportamiento del LoadBalancer
 El Load Balancer debería devolver errores 502/503
 
