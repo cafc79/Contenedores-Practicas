@@ -20,20 +20,9 @@ spec:
         ports:
         - containerPort: 8082
           name: pod-custom-port
-        #resources:
-          #requests:
-            #cpu: 200m	          
-          #limits:
-            #cpu: 400m
-        readinessProbe:
-          httpGet:
-            path: /health
-            port: 8082
-          initialDelaySeconds: 5
-          periodSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 8082
-          initialDelaySeconds: 10
-          periodSeconds: 10
+        resources:
+          requests:
+            cpu: 200m	          
+          limits:
+            cpu: 400m
+       
