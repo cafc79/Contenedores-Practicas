@@ -16,7 +16,7 @@ spec:
       containers:
       - name: webapp
         # image: registry.k8s.io/hpa-example      
-        image: cafc79/loginapi:0.3
+        image: cafc79/loginapi:0.5
         ports:
         - containerPort: 8082
           name: pod-custom-port
