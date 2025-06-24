@@ -16,24 +16,12 @@ spec:
       containers:
       - name: webapp
         # image: registry.k8s.io/hpa-example      
-        image: cafc79/loginapi:0.4
+        image: cafc79/loginapi:0.5
         ports:
-        - containerPort: 8080
+        - containerPort: 8082
           name: pod-custom-port
         resources:
           requests:
-            cpu: 100m	          
+            cpu: 200m	          
           limits:
-            cpu: 200m
-        readinessProbe:
-          httpGet:
-            path: /health
-            port: 8080
-          initialDelaySeconds: 5
-          periodSeconds: 5
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 8080
-          initialDelaySeconds: 10
-          periodSeconds: 10
+            cpu: 300m
